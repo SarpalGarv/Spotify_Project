@@ -284,6 +284,10 @@ body {
 /*  responsive */
 @media (max-width:1400px) {
 
+    :root{
+        --a:0;
+    }
+
     .left {
         background-color: black;
         position: absolute;
@@ -299,6 +303,12 @@ body {
 
     .right {
         width: 100vw;
+    }
+
+    .cardContainer{
+        display: flex;
+        justify-content: center;
+        max-height: 55vh;
     }
 
     .headbar {
@@ -338,6 +348,34 @@ body {
         align-items: center;
         gap: 5px;
         flex-direction: column;
+    }
+
+    .playlist .card {
+        width: 200px;
+        height: 260px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #373837;
+        position: relative;
+    }
+
+    .play {
+        position: absolute;
+        top: 160px;
+        right: 20px;
+        opacity: var(--a);
+        transition: all 0.5s;
+    }
+
+    .card img {
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .card:hover{
+        background-color: #505050;
+        cursor: pointer;
+        --a:1;
     }
     
 }

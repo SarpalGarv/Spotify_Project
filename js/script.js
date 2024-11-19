@@ -1,4 +1,4 @@
-
+console.log("lets write javascript")
 
 let currentSong = new Audio();
 let songs;
@@ -21,7 +21,7 @@ function formatTime(seconds) {
 async function getSongs(folder) {
     currFolder = folder;
 
-    let a = await fetch(`/${folder}/`);
+    let a = await fetch(`/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -77,9 +77,8 @@ const playMusic = (track, pause = false) => {
 
 async function displayAlbums() {
    
-    let a = await fetch(`/songs`);
+    let a = await fetch(`/songs`)
     let response = await a.text();
-    response = response.replace(/<h1>.*?<\/h1>/g, "");
     let div = document.createElement("div");
     div.innerHTML = response;
     let anchors = div.getElementsByTagName("a");
@@ -124,7 +123,7 @@ async function displayAlbums() {
 async function main() {
 
     //get the list of the first song
-    await getSongs("songs/Mohabbatein");
+    await getSongs("songs/Mohabbatein")
     playMusic(songs[0], true);
 
     // display all the ablums on the page 
@@ -184,6 +183,13 @@ async function main() {
     //add an event to volume
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
         currentSong.volume = parseInt(e.target.value)/100;
+        if(currentSong.volume>0)
+        {
+            document.querySelector(".vol>img").src = document.querySelector(".vol>img").src.replace("mute.svg", "volume.svg");
+        }
+        else{
+            document.querySelector(".vol>img").src = document.querySelector(".vol>img").src.replace("volume.svg", "mute.svg");
+        }
     })
 
     // add evebt listener to mute the volume
